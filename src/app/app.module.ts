@@ -24,10 +24,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MovieViewComponent } from './movie-view/movie-view.component';
 import { GenreViewComponent } from './genre-view/genre-view.component';
 import { DirectorViewComponent } from './director-view/director-view.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'users', component: UserProfileComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -41,6 +44,8 @@ const appRoutes: Routes = [
     MovieViewComponent,
     GenreViewComponent,
     DirectorViewComponent,
+    UserProfileComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
