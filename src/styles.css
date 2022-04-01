@@ -3,10 +3,12 @@
 html,
 body {
   height: 100%;
-  background-color: #cddcf7;
+  background-color: #E0E2DB;
+  color: #BEB7A4;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-weight: bold;
 }
