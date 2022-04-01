@@ -1,3 +1,17 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with home icon">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span>MyFlix</span>
+  <span class="example-spacer"> </span>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with profile icon" (click)="toProfile()">
+    <mat-icon>perm_identity</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with logout icon" (click)="logOut()">
+    <mat-icon>power_settings_new</mat-icon>
+  </button>
+</mat-toolbar>
+
 <div style="display: flex; margin: 15px;">
   <mat-card class='user-info'>
     <mat-card-header>
