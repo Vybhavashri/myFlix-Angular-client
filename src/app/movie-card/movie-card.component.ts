@@ -74,4 +74,8 @@ export class MovieCardComponent {
   goToMoviesPage(): void {
     this.router.navigate(['movies']);
   }
+
+  toProfile(): void {
+    this.router.navigate(['users']);
+  }
 }
