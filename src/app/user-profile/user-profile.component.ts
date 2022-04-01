@@ -110,4 +110,17 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  logOut(): void {
+    localStorage.clear();
+    this.snackBar.open('You have been successfully logged out', 'Ok', {
+      duration: 2000,
+    });
+    this.router.navigate(['welcome']);
+  }
+
+
+  toProfile(): void {
+    this.router.navigate(['users']);
+  }
+
 }
