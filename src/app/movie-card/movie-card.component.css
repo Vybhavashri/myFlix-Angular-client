@@ -1,3 +1,17 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+mat-toolbar {
+  background-color: #000;
+  color: #BEB7A4;
+}
+
+mat-card {
+  background-color: #E0E2DB;
+  color: #372806;
+}
+
+mat-card-actions button {
+  color: #000;
+}
