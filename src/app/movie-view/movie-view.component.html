@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-content>
+    <img src="{{ movie.Poster }}" style="height: 250px" crossorigin="true" />
+  </mat-card-content>
+  <mat-card-title>{{ movie.Title }}</mat-card-title><br />
+  <mat-card-content>{{ movie.Description }}</mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button aria-label="Close the movie details button" mat-dialog-close color="primary">
+      Close
+    </button>
+  </mat-card-actions>
+</mat-card>
