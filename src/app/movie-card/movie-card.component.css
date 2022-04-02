@@ -8,10 +8,13 @@ mat-toolbar {
 }
 
 mat-card {
-  background-color: #E0E2DB;
-  color: #372806;
+  background-color: #e6f2ff;
 }
 
 mat-card-actions button {
   color: #000;
+}
+
+.favIcon {
+  color: rgb(187, 22, 22);
 }
