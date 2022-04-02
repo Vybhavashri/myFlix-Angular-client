@@ -1,0 +1,8 @@
+.closeButton {
+  background-color: rgb(37, 81, 224);
+  color: white;
+}
+
+mat-card {
+  background-color: #e6f2ff;
+}
