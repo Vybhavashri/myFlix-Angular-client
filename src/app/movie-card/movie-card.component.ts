@@ -16,6 +16,9 @@ import { DirectorViewComponent } from '../director-view/director-view.component'
 export class MovieCardComponent {
 
   movies: any[] = [];
+  user: any = localStorage.getItem('user');
+  FavMovie: any[] = [];
+
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -26,6 +29,7 @@ export class MovieCardComponent {
 
   ngOnInit(): void {
     this.getMovies();
+    this.showFavMovie();
   }
 
   getMovies(): void {
@@ -33,6 +37,41 @@ export class MovieCardComponent {
       this.movies = resp;
       return this.movies;
     });
+  }
+
+  showFavMovie(): void {
+    this.fetchApiData.getUserProfile().subscribe((resp: any) => {
+      this.FavMovie = resp.FavouriteMovies;
+      return this.FavMovie;
+    });
+  }
+
+  addFavMovie(MovieID: string, Title: string): void {
+    this.fetchApiData.addFavoriteMovies(MovieID).subscribe((response: any) => {
+      this.snackBar.open(`${Title} is added to your favourites.`, 'OK', {
+        duration: 3000,
+      });
+      this.showFavMovie();
+    });
+  }
+
+  deleteFavMovie(MovieID: string, Title: string): void {
+    this.fetchApiData.deleteFavoriteMovies(MovieID).subscribe((response: any) => {
+      this.snackBar.open(`${Title} is removed from favourites.`, 'OK', {
+        duration: 3000,
+      });
+      this.showFavMovie();
+    });
+  }
+
+  isFav(MovieID: string): boolean {
+    return this.FavMovie.some((id) => id === MovieID);
+  }
+
+  setFavStatus(movie: any): void {
+    this.isFav(movie._id)
+      ? this.deleteFavMovie(movie._id, movie.Title)
+      : this.addFavMovie(movie._id, movie.Title);
   }
 
   openMovieDialog(title: string, poster: any, description: string): void {
@@ -77,5 +116,9 @@ export class MovieCardComponent {
 
   toProfile(): void {
     this.router.navigate(['users']);
+  }
+
+  toHome(): void {
+    this.router.navigate(['movies']);
   }
 }
