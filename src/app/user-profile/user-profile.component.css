@@ -1,3 +1,18 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.deleteButton {
+  background-color: rgba(247, 26, 26, 0.856);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 40px;
+}
+
+.favIcon {
+  color: rgb(187, 22, 22);
+}
