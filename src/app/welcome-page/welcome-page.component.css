@@ -1,0 +1,24 @@
+.main-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 30px;
+  text-align: center;
+  line-height: 35px;
+  margin-bottom: 25px;
+  color: #000;
+}
+
+.div-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+}
