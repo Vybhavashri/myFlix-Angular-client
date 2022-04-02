@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with home icon">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with home icon" (click)="toHome()">
     <mat-icon>home</mat-icon>
   </button>
   <span>MyFlix</span>
@@ -22,13 +22,38 @@
       <h3><b>Email: </b>{{ user.EmailID }}</h3>
       <h3><b>Birthday: </b>{{ user.Birth | date : 'mediumDate' }}</h3>
       <br>
-      <button class='profile-btn' mat-raised-button (click)="openEditUserProfile()" style='margin-right: 10px;'
+      <button class='eidtButton' mat-raised-button (click)="openEditUserProfile()" style='margin-right: 10px;'
         color="primary">
         Edit Profile
       </button>
-      <button class='profile-btn' color="warn" mat-raised-button (click)="deleteProfile()">
+      <button class='deleteButton' mat-raised-button (click)="deleteProfile()">
         Delete Profile
       </button>
     </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="favorite-movies-header">
+  <h2 class="mat-card-favorite-movies">Favorite Movies</h2>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; ">
+  <mat-card *ngFor="let movie of FavMovie;" class="favorite-movies" style="flex: 1 1 100px;">
+    <mat-card-header class="favorite-movies-title-header">
+      <mat-card-title class="favorite-movies-title">
+        {{movie.Title}}
+      </mat-card-title>
+      <mat-card-subtitle class="director">Directed by:
+        <button class="director-button" mat-button color="grey"
+          (click)="openDirectorDialog(movie.Director.Name, movie.Director.Bio, movie.Director.Birth)">
+          {{movie.Director.Name}}
+        </button>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img src={{movie.Poster}} alt={{movie.Title}} crossorigin="true" height="150px" />
+    <mat-card-actions>
+      <button mat-icon-button class="favIcon" (click)="removeFavMovie(movie._id, movie.Title)">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>
