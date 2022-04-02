@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with home icon">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with home icon" (click)="toHome()">
     <mat-icon>home</mat-icon>
   </button>
   <span>MyFlix</span>
@@ -14,7 +14,7 @@
 
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; ">
-  <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
+  <mat-card *ngFor="let movie of movies;" style="flex: 1 1 300px;">
     <mat-card-header>
       <mat-card-title>{{movie.Title}}</mat-card-title>
       <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
@@ -34,9 +34,14 @@
         Director
       </button>
       <button mat-button color="primary" (click)="openMovieDialog(movie.Title, movie.Poster, movie.Description)">
-        Show more..
+        Show more
       </button>
-      <mat-icon>favorite_border</mat-icon>
+
+      <button mat-icon-button (click)="setFavStatus(movie)">
+        <mat-icon class="favIcon" *ngIf="isFav(movie._id)">favorite</mat-icon>
+        <mat-icon *ngIf="!isFav(movie._id)">favorite_border</mat-icon>
+      </button>
+
     </mat-card-actions>
   </mat-card>
 </div>
