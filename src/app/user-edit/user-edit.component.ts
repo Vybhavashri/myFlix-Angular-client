@@ -27,7 +27,6 @@ export class UserEditComponent implements OnInit {
       this.dialogRef.close();
       window.location.reload();
       localStorage.setItem('username', res.Username)
-      console.log(res)
       this.snackBar.open(this.userData.Username, 'Successfully updated user details!', {
         duration: 3000
       });
@@ -37,5 +36,4 @@ export class UserEditComponent implements OnInit {
       });
     })
   }
-
 }
