@@ -9,6 +9,11 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 })
 export class MovieViewComponent implements OnInit {
 
+  /**
+   * Called when creating an instance of the class
+   * @param fetchApiData 
+   * @param movie 
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     @Inject(MAT_DIALOG_DATA)
@@ -20,5 +25,8 @@ export class MovieViewComponent implements OnInit {
     }
   ) { }
 
+  /**
+   * Initializes the component
+   */
   ngOnInit(): void { }
 }
