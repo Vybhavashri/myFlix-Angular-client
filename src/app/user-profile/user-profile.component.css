@@ -16,3 +16,7 @@
 .favIcon {
   color: rgb(187, 22, 22);
 }
+
+mat-card {
+  background-color: #e6f2ff;
+}
