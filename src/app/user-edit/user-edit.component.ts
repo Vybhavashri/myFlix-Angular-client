@@ -10,6 +10,9 @@ import { FetchApiDataService } from '../fetch-api-data.service';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
+  /**
+   * input values bound to userData
+   */
   @Input() userData = { Username: '', Password: '', EmailID: '', Birth: '' };
 
   constructor(
@@ -22,17 +25,23 @@ export class UserEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * function to edit user profile
+   * @function editUserProfile 
+   * @param this.userData
+   * @returns updated user info in JSON format + storage in localStorage
+   */
   editUserProfile(): void {
     this.fetchApiData.editUserProfile(this.userData).subscribe((res) => {
       this.dialogRef.close();
       window.location.reload();
       localStorage.setItem('username', res.Username)
       this.snackBar.open(this.userData.Username, 'Successfully updated user details!', {
-        duration: 3000
+        duration: 2000
       });
     }, (res) => {
       this.snackBar.open(res, 'OK', {
-        duration: 3000
+        duration: 2000
       });
     })
   }
