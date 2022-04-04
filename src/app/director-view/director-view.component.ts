@@ -9,6 +9,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DirectorViewComponent implements OnInit {
 
+  /**
+     * Called when creating an instance of the class
+     * @param data {object}
+     */
   constructor(
     public fetchApiData: FetchApiDataService,
     @Inject(MAT_DIALOG_DATA)
@@ -19,5 +23,8 @@ export class DirectorViewComponent implements OnInit {
     }
   ) { }
 
+  /**
+ * Initializes the component
+ */
   ngOnInit(): void { }
 }
