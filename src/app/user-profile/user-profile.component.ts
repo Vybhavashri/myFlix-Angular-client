@@ -15,10 +15,18 @@ import { DirectorViewComponent } from '../director-view/director-view.component'
 })
 export class UserProfileComponent implements OnInit {
 
+  //Setting the initial values to null
   user: any = {};
   movies: any[] = [];
   FavMovie: any = [];
 
+  /**
+   * Called when creating an instance of the class
+   * @param fetchApiData 
+   * @param snackBar 
+   * @param dialog 
+   * @param router 
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
@@ -26,11 +34,19 @@ export class UserProfileComponent implements OnInit {
     public router: Router
   ) { }
 
+  /**
+ * Initializes the component
+ */
   ngOnInit(): void {
     this.getCurrentUser();
     this.getFavMovie();
   }
 
+  /**
+   * calls API endpoint to get user info
+   * @function getUserProfile
+   * @return user data in JSON format
+   */
   getCurrentUser(): void {
     this.fetchApiData.getUserProfile().subscribe((response: any) => {
       this.user = response;
@@ -38,6 +54,10 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+ * function to let the user display their favorited movies 
+ * @function getAllMovies
+ */
   getFavMovie(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -49,6 +69,11 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * @function deleteFavoriteMovies
+   * @param MovieID 
+   * calls api endpoint to remove movie fron favourite list
+   */
   removeFavMovie(MovieID: string, Title: string): void {
     this.fetchApiData.deleteFavoriteMovies(MovieID).subscribe((resp) => {
       this.snackBar.open(
@@ -64,12 +89,19 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Open user-edit component
+   */
   openEditUserProfile(): void {
     this.dialog.open(UserEditComponent, {
       width: '500px'
     });
   }
 
+  /**
+   * @function deleteProfile
+   * calls api endpoint to delete user profile + clear local storage
+   */
   deleteProfile(): void {
     if (confirm('Are you sure? This cannot be undone.')) {
       this.router.navigate(['welcome']).then(() => {
@@ -83,6 +115,9 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  /**
+   * Logsout user + clear local storage
+   */
   logOut(): void {
     localStorage.clear();
     this.snackBar.open('You have been successfully logged out', 'Ok', {
@@ -91,6 +126,12 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['welcome']);
   }
 
+  /**
+   * Opens movie detail dialog
+   * @param title 
+   * @param poster 
+   * @param description 
+   */
   openMovieDialog(title: string, poster: any, description: string): void {
     this.dialog.open(MovieViewComponent, {
       data: {
@@ -102,6 +143,11 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens genre view dialog
+   * @param name 
+   * @param description 
+   */
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreViewComponent, {
       data: {
@@ -112,6 +158,12 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens director view dialog
+   * @param name
+   * @param bio 
+   * @param birthdate 
+   */
   openDirectorDialog(name: string, bio: string, birthdate: Date): void {
     this.dialog.open(DirectorViewComponent, {
       data: { name, bio, birthdate },
@@ -119,10 +171,16 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Navigate to profile page
+   */
   toProfile(): void {
     this.router.navigate(['users']);
   }
 
+  /**
+   * Navigate to home page
+   */
   toHome(): void {
     this.router.navigate(['movies']);
   }
