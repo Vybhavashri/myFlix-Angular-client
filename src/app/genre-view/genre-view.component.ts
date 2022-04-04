@@ -10,6 +10,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export class GenreViewComponent implements OnInit {
 
+  /**
+   * Called when creating an instance of the class
+   * @param data {object}
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     @Inject(MAT_DIALOG_DATA)
@@ -19,5 +23,8 @@ export class GenreViewComponent implements OnInit {
     }
   ) { }
 
+  /**
+   * Initializes the component
+   */
   ngOnInit(): void { }
 }
